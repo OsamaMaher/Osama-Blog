@@ -1,0 +1,221 @@
+
+
+.container-fluid {
+    padding: 0 10% 0;
+}
+
+/* ///////////////////////////////////////  Login and Register //////////////////////////////////////// */
+.reg {
+    background-color: #A4D0A4;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+.reg h1 {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+.reg form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    background-color: white;
+    width: 350px;
+    border-radius: 10px;
+}
+.reg input {
+    padding: 10px;
+    margin: 10px 0;
+}
+.reg button{
+    margin: 20px;
+    width: 100px;
+    align-self: center;
+}
+.reg p {
+    color: red;
+}
+
+/* ////////////////////////////////////////////  Footer //////////////////////////////////////////// */
+
+.nav-item .btn {
+    margin-top: 5px;
+}
+
+/* ////////////////////////////////////////////  Footer //////////////////////////////////////////// */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+
+/* ////////////////////////////////////////////  Home //////////////////////////////////////////// */
+
+.home-posts{
+    align-items: center;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 70px
+}
+.card {
+    margin: 0 10% 0;
+    border: none;
+}
+.card-header{
+    background-color: #EDF1D6;
+}
+.card-body {
+    display: flex;
+    gap: 50px;
+}
+.card-body.odd {
+    flex-direction: row-reverse;
+}
+.card img {
+    width: 300px;
+}
+.card-img {
+    width: 300px;
+    max-height: 300px;
+    position: relative;
+    z-index: 2;
+}
+.card-img::after {
+    content: "";
+    width: 300px;
+    height: 300px;
+    position:absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #A4D0A4;
+    z-index: -1;
+
+}
+.card-text {
+    text-align: justify;
+}
+
+@media (max-width:760px) {
+    .card-body {
+        text-align: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .card-body.odd {
+        flex-direction: column;
+    }
+    .post{
+        flex-direction: column;
+    }
+    .write {
+        flex-direction: column;
+    }
+    
+}
+/* ////////////////////////////////////////////  Post page //////////////////////////////////////////// */
+
+.post {
+    display: flex;
+    gap: 70px;
+    padding-left: 2%;
+    margin-top: 50px;
+}
+.post-body {
+    flex: 60%;
+}
+.post-body img {
+    width: 100%;
+}
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.profile img {
+    width: 50px;
+}
+.user-info p {
+    margin-bottom: 0;
+    margin-right: 5px;
+}
+.user-info span {
+    font-weight: bold;
+}
+.post-body>h2{
+    margin-top: 50px;
+}
+.post-body>p{
+    text-align: justify;
+}
+.post-menu {
+    flex: 20%;
+    text-align: left;
+}
+
+/* ////////////////////////////////////////////  Post menu //////////////////////////////////////////// */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.menu-post {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.menu-post img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+/* ////////////////////////////////////////////  Write page //////////////////////////////////////////// */
+
+.write {
+    display: flex;
+    gap: 50px;
+    margin-top: 50px;
+    
+}
+.write-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 70%;
+}
+.text-box {
+    height:310px;
+}
+.text-boxarea {
+    height: 100%;
+}
+.write-menu {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    flex: 30%;
+}
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid #aba;
+    padding: 5px 15px;
+}
+.up-file {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 5px;
+}
