@@ -1,11 +1,24 @@
-import React from "react";
-import Posts from "../Posts";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 
 function Home() {
+  const [posts, setPosts] = useState([]);
+  const getLocation = useLocation();
+  useEffect(() => {
+    const fetchposts = async () => {
+      await axios
+        .get(`posts${getLocation.search}`)
+        .then((res) => {
+          setPosts(res.data);
+        })
+        .catch((err) => console.log(err));
+    };
+    fetchposts();
+  }, [getLocation]);
   return (
     <div className="home-posts">
-      {Posts.map((post) => {
+      {posts.map((post) => {
         return (
           <div className="card" key={post.id}>
             <div>
@@ -20,7 +33,7 @@ function Home() {
                 <div>
                   <p className="card-text">{post.content}</p>
                   <Link
-                    to={"/post/" + post.id}
+                    to={`/post/${post.id}`}
                     className="btn btn-outline-success"
                   >
                     Read more

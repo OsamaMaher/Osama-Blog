@@ -1,14 +1,16 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 function Login() {
   const [input, setInput] = useState({
     username: "",
-    email: "",
     password: "",
   });
   const [error, setError] = useState(null);
+
+  const { login } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -21,9 +23,8 @@ function Login() {
 
   function handleClick(event) {
     event.preventDefault();
-    axios
-      .post("login", input)
-      .then((res) => {
+    login(input)
+      .then(() => {
         navigate("/");
       })
       .catch((err) => setError(err.response.data));

@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 function Navbar() {
+  const { logout } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
+
+  const handleClick = () => {
+    logout();
+  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -28,17 +35,17 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/">
+                <Link className="nav-link active" to="/?cat=tech">
                   Tech
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/">
+                <Link className="nav-link active" to="/?cat=art">
                   Art
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/">
+                <Link className="nav-link active" to="/?cat=science">
                   Science
                 </Link>
               </li>
@@ -49,16 +56,35 @@ function Navbar() {
                   Write
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="btn btn-success me-2" to="/login">
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="btn btn-success" to="/register">
-                  Sign-up
-                </Link>
-              </li>
+              {currentUser ? (
+                <>
+                  <li className="nav-item">
+                    <button
+                      type="submit"
+                      className="btn btn-success me-2"
+                      onClick={handleClick}
+                    >
+                      Logout
+                    </button>
+                  </li>
+                  <li className="nav-item">
+                    <button className="btn btn-light">{currentUser}</button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link className="btn btn-success me-2" to="/login">
+                      Login
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="btn btn-success" to="/register">
+                      Register
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

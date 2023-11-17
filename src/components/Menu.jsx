@@ -1,14 +1,29 @@
-import React from "react";
-import Posts from "../Posts";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 function Menu() {
+  const [posts, setPosts] = useState([]);
+  const getLocation = useLocation();
+
+  useEffect(() => {
+    const fetchposts = async () => {
+      await axios
+        .get(`posts${getLocation.search}`)
+        .then((res) => {
+          setPosts(res.data);
+        })
+        .catch((err) => console.log(err));
+    };
+    fetchposts();
+  }, [getLocation]);
+
   return (
     <div className="menu">
       <h2>Posts you may like</h2>
-      {Posts.map((post) => {
+      {posts.map((post) => {
         return (
-          <div className="menu-post">
+          <div className="menu-post" key={post.id}>
             <h3>{post.title}</h3>
             <img src={post.image} alt="nature" />
             <div>

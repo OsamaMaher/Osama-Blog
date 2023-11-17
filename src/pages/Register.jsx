@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useContext, useState } from "react";
+import { Link, redirect, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 function Regester() {
   const [input, setInput] = useState({
@@ -12,6 +12,8 @@ function Regester() {
 
   const navigate = useNavigate();
 
+  const { register } = useContext(UserContext);
+
   function handleChange(event) {
     const { name, value } = event.target;
     setInput((prev) => {
@@ -21,9 +23,8 @@ function Regester() {
 
   function handleClick(event) {
     event.preventDefault();
-    axios
-      .post("register", input)
-      .then((res) => {
+    register(input)
+      .then(() => {
         navigate("/");
       })
       .catch((err) => setError(err.response.data));
